@@ -37,11 +37,11 @@ def search(request):
                 })
 
         for entry in entries:
-            if query.upper() in entry.upper():
+            if query.toupper() in entry.toupper():
                 return render(request, "encyclopedia/entries.html",{
+                    "title": entry,
                     "entry": md.convert(util.get_entry(entry))
                 })
-                
         for entry in entries:
             if query.upper() not in entry.upper():
                 return render(request, "encyclopedia/error.html", {
